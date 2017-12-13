@@ -1,0 +1,51 @@
+<!-- This is the corresponding "starter code" for 04_Hello Map in Udacity and Google's Maps
+API Course, Lesson 1 -->
+<html>
+ <head>
+ <!-- styles put here, but you can include a CSS file and reference it instead! -->
+   <style type="text/css">
+     html, body { height: 100%; margin: 0; padding: 0; }
+     #map { height: 100%; }
+   </style>
+ </head>
+ <body>
+   <!-- TODO 1: Create a place to put the map in the HTML-->
+   <div id="map"></div>
+   <script>
+     // TODO: Create a map variable
+     var map,marker,infoWindow;
+     var myLatLng = {lat:41.411842, lng: -73.498408};
+
+     // TODO: Complete the following function to initialize the map
+     function initMap() {
+       // TODO: use a constructor to create a new map JS object. You can use the coordinates
+       map= new google.maps.Map(document.getElementById('map'), {
+        center: {lat:41.411842, lng: -73.498408},
+        zoom: 12
+       });
+
+      //use a constructor to create a new marker JS object. You can use the coordinates
+      marker= new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Hello Marker'
+      });
+
+    //use a constructor to create a new infoWindow JS object. You can use the coordinates
+      infoWindow= new google.maps.InfoWindow({
+       content: 'Hello InfoWindow'
+      });
+
+      marker.addListener('click', function() {
+        infoWindow.open(map, marker);
+      });
+       // we used, 40.7413549, -73.99802439999996 or your own!
+     }
+   </script>
+   <!--TODO: Load the JS API ASYNCHRONOUSLY below.-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBh5Hq0PYxbYA8VwksRU2PCG77vJMz3q9s&callback=initMap"
+    async defer></script>
+   <script>
+   </script>
+ </body>
+</html>
